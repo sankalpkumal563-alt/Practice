@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alisha - My Colorful Joy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .color-transition {
+            transition: background 0.5s ease;
+        }
+        
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .heart-beat {
+            animation: heartBeat 1.5s infinite;
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div id="vanta-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-white/30 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-pink-600 dancing-script text-3xl font-bold">Alisha</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-pink-600 transition">Home</a>
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-pink-600 transition">About</a>
+                        <a href="#colors" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-pink-600 transition">Colors</a>
+                        <a href="#joy" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-pink-600 transition">Joy</a>
+                        <a href="#memories" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-pink-600 transition">Memories</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-sm">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-pink-600">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-pink-600">About</a>
+                <a href="#colors" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-pink-600">Colors</a>
+                <a href="#joy" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-pink-600">Joy</a>
+                <a href="#memories" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-pink-600">Memories</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+            <div class="card-3d bg-white/20 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20">
+                <h1 class="text-4xl md:text-6xl font-bold text-white dancing-script text-shadow mb-6">
+                    Alisha <span class="text-pink-500">❤️</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white poppins mb-8 max-w-3xl mx-auto">
+                    The one who paints my world with vibrant colors and fills every moment with boundless joy and happiness.
+                </p>
+                <div class="mt-10">
+                    <a href="#about" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-pink-600 hover:bg-pink-700 transition duration-300 transform hover:scale-105">
+                        Discover Her Magic
+                        <svg class="ml-3 -mr-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                <div class="animate-bounce">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-pink-100 to-purple-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dancing-script mb-4">About Alisha</h2>
+                <div class="w-24 h-1 bg-pink-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="card-3d bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-900 poppins mb-4">Her Radiant Personality</h3>
+                    <p class="text-gray-700 poppins mb-6">
+                        Alisha is like a ray of sunshine that never fades. Her laughter is contagious, her smile can light up the darkest room, and her presence makes every moment special.
+                    </p>
+                    <p class="text-gray-700 poppins mb-6">
+                        She has this incredible ability to find joy in the smallest things and share that happiness with everyone around her. Her positive energy is simply magnetic.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="flex-1 bg-pink-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-pink-700 poppins">Kind Heart</h4>
+                            <p class="text-sm text-gray-600 poppins">Always caring for others</p>
+                        </div>
+                        <div class="flex-1 bg-purple-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-purple-700 poppins">Creative Soul</h4>
+                            <p class="text-sm text-gray-600 poppins">Sees beauty everywhere</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="floating">
+                        <div class="bg-white p-2 rounded-full shadow-xl inline-block">
+                            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 flex items-center justify-center overflow-hidden">
+                                <div class="text-8xl dancing-script text-white">A</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-yellow-300 opacity-70"></div>
+                    <div class="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-blue-300 opacity-70"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Colors Section -->
+    <section id="colors" class="py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dancing-script mb-4">The Colors She Brings</h2>
+                <p class="text-xl text-gray-600 poppins max-w-3xl mx-auto">
+                    Alisha doesn't just add color to life - she creates a whole rainbow of emotions and experiences.
+                </p>
+                <div class="w-24 h-1 bg-pink-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card-3d color-transition bg-pink-100 hover:bg-pink-200 rounded-2xl p-6 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-pink-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 poppins mb-2">Love</h3>
+                    <p class="text-sm text-gray-600 poppins">Unconditional and pure</p>
+                </div>
+                
+                <div class="card-3d color-transition bg-yellow-100 hover:bg-yellow-200 rounded-2xl p-6 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-yellow-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 poppins mb-2">Happiness</h3>
+                    <p class="text-sm text-gray-600 poppins">Endless smiles and laughter</p>
+                </div>
+                
+                <div class="card-3d color-transition bg-blue-100 hover:bg-blue-200 rounded-2xl p-6 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-blue-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 poppins mb-2">Peace</h3>
+                    <p class="text-sm text-gray-600 poppins">Calm in every storm</p>
+                </div>
+                
+                <div class="card-3d color-transition bg-purple-100 hover:bg-purple-200 rounded-2xl p-6 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-purple-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 poppins mb-2">Energy</h3>
+                    <p class="text-sm text-gray-600 poppins">Vibrant and inspiring</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 relative">
+                <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-xl">
+                    <div class="text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dancing-script mb-6">"Alisha turns ordinary days into extraordinary adventures"</h3>
+                        <div class="w-full h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 rounded-full mb-8"></div>
+                        <p class="text-lg text-gray-700 poppins max-w-3xl mx-auto">
+                            With her by my side, every moment becomes a canvas where she paints with the brightest colors of love, joy, and happiness. She has this magical ability to transform the mundane into something beautiful and memorable.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-pink-200 opacity-30 -z-10"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-blue-200 opacity-30 -z-10"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Joy Section -->
+    <section id="joy" class="py-20 bg-gradient-to-b from-blue-50 to-indigo-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dancing-script mb-4">The Joy She Brings</h2>
+                <p class="text-xl text-gray-600 poppins max-w-3xl mx-auto">
+                    Happiness isn't just an emotion with Alisha - it's a way of life that she shares generously.
+                </p>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-3d bg-white rounded-2xl p-6 shadow-xl">
+                    <div class="relative h-48 mb-6 overflow-hidden rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 poppins mb-3">Laughter That Echoes</h3>
+                    <p class="text-gray-600 poppins">
+                        Alisha's laughter is like music that fills the air, turning even the most stressful days into moments of pure joy.
+                    </p>
+                </div>
+                
+                <div class="card-3d bg-white rounded-2xl p-6 shadow-xl">
+                    <div class="relative h-48 mb-6 overflow-hidden rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 poppins mb-3">Creativity Unleashed</h3>
+                    <p class="text-gray-600 poppins">
+                        She sees the world through a lens of wonder, finding beauty and inspiration in everything around her.
+                    </p>
+                </div>
+                
+                <div class="card-3d bg-white rounded-2xl p-6 shadow-xl">
+                    <div class="relative h-48 mb-6 overflow-hidden rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 poppins mb-3">Comfort in Tough Times</h3>
+                    <p class="text-gray-600 poppins">
+                        When life gets hard, Alisha has this incredible ability to bring comfort and perspective that makes everything better.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <div class="inline-block relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75"></div>
+                    <button id="joy-btn" class="relative px-8 py-4 bg-white rounded-lg text-gray-900 font-bold poppins shadow-lg hover:bg-gray-50 transition">
+                        Click to Feel the Joy
+                    </button>
+                </div>
+                <div id="joy-message" class="mt-8 hidden">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 inline-block max-w-md">
+                        <p class="text-xl dancing-script text-pink-600">"Alisha's joy is contagious - once you experience it, you'll never want to be without it!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Memories Section -->
+    <section id="memories" class="py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dancing-script mb-4">Precious Memories</h2>
+                <p class="text-xl text-gray-600 poppins max-w-3xl mx-auto">
+                    Every moment with Alisha becomes a cherished memory that lasts forever.
+                </p>
+                <div class="w-24 h-1 bg-purple-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Memory 1 -->
+                <div class="card-3d group relative overflow-hidden rounded-2xl shadow-xl h-64">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-500 to-purple-600 opacity-90"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white poppins mb-2">Our First Meeting</h3>
+                        <p class="text-white/90 poppins mb-4">The day my life changed forever</p>
+                        <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                            <p class="text-white poppins text-sm">I'll never forget how her smile lit up the room and how instantly comfortable I felt with her.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Memory 2 -->
+                <div class="card-3d group relative overflow-hidden rounded-2xl shadow-xl h-64">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-teal-600 opacity-90"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white poppins mb-2">Adventures Together</h3>
+                        <p class="text-white/90 poppins mb-4">Exploring the world side by side</p>
+                        <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                            <p class="text-white poppins text-sm">Every trip becomes magical with Alisha - she finds wonder in every new place we visit.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Memory 3 -->
+                <div class="card-3d group relative overflow-hidden rounded-2xl shadow-xl h-64">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500 to-orange-600 opacity-90"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white poppins mb-2">Quiet Moments</h3>
+                        <p class="text-white/90 poppins mb-4">Just being together is enough</p>
+                        <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                            <p class="text-white poppins text-sm">Some of my favorite memories are the simple ones - talking for hours or just enjoying comfortable silence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-xl inline-block max-w-4xl">
+                    <h3 class="text-2xl md:text-4xl font-bold text-gray-900 dancing-script mb-6">"Alisha, you make every day worth living"</h3>
+                    <div class="w-full h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 rounded-full mb-8"></div>
+                    <p class="text-lg text-gray-700 poppins mb-8">
+                        Thank you for coloring my world with your love, for filling my days with laughter, and for being the reason I wake up with a smile. You are my happiness, my joy, and my greatest blessing.
+                    </p>
+                    <div class="heart-beat inline-block text-6xl text-pink-600">❤️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl dancing-script text-pink-400 mb-6">Alisha</h2>
+                <p class="poppins max-w-2xl mx-auto mb-8">
+                    The one who turned my black and white world into a vibrant masterpiece of love and happiness.
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="poppins text-gray-400 text-sm">
+                    Created with love for the most wonderful person in the world.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Joy button interaction
+        const joyBtn = document.getElementById('joy-btn');
+        const joyMessage = document.getElementById('joy-message');
+        
+        joyBtn.addEventListener('click', () => {
+            joyMessage.classList.toggle('hidden');
+            
+            // Create floating hearts animation
+            for (let i = 0; i < 10; i++) {
+                createFloatingHeart();
+            }
+        });
+        
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'absolute text-xl';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.opacity = '0';
+            heart.style.transform = 'translateY(0)';
+            heart.style.transition = 'all 1s ease-out';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.opacity = '1';
+                heart.style.transform = 'translateY(-100px)';
+            }, 10);
+            
+            setTimeout(() => {
+                heart.style.opacity = '0';
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }, 1000);
+        }
+        
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xff6b9e,
+            backgroundColor: 0x0,
+            points: 12.00,
+            maxDistance: 23.00,
+            spacing: 18.00
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Color changing effect for the hero section
+        const colors = ['#ff6b9e', '#9e6bff', '#6b9eff', '#6bff9e', '#ff9e6b'];
+        let currentColor = 0;
+        
+        setInterval(() => {
+            currentColor = (currentColor + 1) % colors.length;
+            VANTA.NET({
+                el: "#vanta-bg",
+                color: colors[currentColor],
+                backgroundColor: 0x0,
+                points: 12.00,
+                maxDistance: 23.00,
+                spacing: 18.00
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
